@@ -1,6 +1,12 @@
+import { CssBaseline } from "@mui/material";
+import NavDrawer from "./NavDrawer";
+
 function App() {
     return (
-        <h1>Hello Etsy</h1>
+        <>
+            <CssBaseline />
+            <NavDrawer />
+        </>
     );
 }
 
