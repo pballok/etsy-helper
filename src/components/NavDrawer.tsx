@@ -1,6 +1,13 @@
 import { useState } from 'react';
-import {Drawer, IconButton, List, ListItemButton, ListItemText} from "@mui/material";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import IconButton from '@mui/material/IconButton';
+import List from '@mui/material/List';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemText from '@mui/material/ListItemText';
+
+import './NavDrawer.css';
 
 function NavDrawer() {
     const [open, setOpen] = useState(false);
@@ -10,19 +17,25 @@ function NavDrawer() {
         {name: "Orders"},
     ];
 
+    const list = (
+      <Box role="presentation" onClick={() => {setOpen(false);}}>
+         <List>
+             {navItems.map((item, index) => (
+                 <ListItemButton key={`"nav-"${index}`}>
+                     <ListItemText primary={item.name} />
+                 </ListItemButton>
+             ))}
+         </List>
+      </Box>
+    );
+
     return (
         <>
-            <IconButton onClick={() => {setOpen(true);}}>
+            <IconButton className="openIcon" onClick={() => {setOpen(true);}}>
                 {open ? null : <ArrowForwardIosIcon />}
             </IconButton>
             <Drawer variant="temporary" anchor="left" open={open} onClose={() => {setOpen(false);}}>
-                {navItems.map((item, index) => (
-                    <List>
-                        <ListItemButton key={`"nav-"${index}`}>
-                            <ListItemText primary={item.name} />
-                        </ListItemButton>
-                    </List>
-                ))}
+                {list}
             </Drawer>
         </>
     )
