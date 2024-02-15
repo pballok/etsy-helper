@@ -1,11 +1,21 @@
-import { CssBaseline } from "@mui/material";
-import NavDrawer from "./NavDrawer";
+import CssBaseline from '@mui/material/CssBaseline';
+
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+
+import Dashboard from '../routes/Dashboard';
 
 function App() {
+    const router = createBrowserRouter([
+        {
+            path: "/",
+            element: <Dashboard />,
+        },
+    ]);
+
     return (
         <>
             <CssBaseline />
-            <NavDrawer />
+            <RouterProvider router={router} />
         </>
     );
 }

@@ -1,0 +1,7 @@
+.app-bar {
+    flex-grow: 1;
+}
+
+.app-bar__title {
+    flex-grow: 1;
+}
